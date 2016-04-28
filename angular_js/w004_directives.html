@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="">
+    <head>
+        <title>Directives</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" >
+    </head>
+    <!-- Mahmudul Hasan Khan-->
+    <body>
+        <div class="container">
+            <div ng-init="quantity=2;cost=5">
+                <p><strong>Quantity : </strong><input type="number" ng-model="quantity"></p>
+                <p><strong>Cost : </strong><input type="number" ng-model="cost"></p>
+                <p><strong>Total Price in BDT : </strong>{{quantity*cost|currency}}</p>
+            </div>
+            <div ng-init="names=['Super Man','Bat Man','Iron Man']">
+                <p>Displaying Names:</p>
+                <ul>
+                    <li ng-repeat="name in names">
+                        {{name}}
+                    </li>
+                </ul>
+            </div>
+            <div ng-init="persons=[
+                {name:'Super Man', country:'Pakistan'},
+                {name:'Iron Man', country:'Bangladesh'},
+                {name:'Bat Man', country:'Australia'}
+            ]">
+                <p>Displaying Persons:</p>
+                <ul>
+                    <li ng-repeat="person in persons">
+                        {{person.name + ' from: ' + person.country}}
+                        <span ng-if="person.country == 'Bangladesh'">. He is Bangladeshi</span>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+        <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="../bower_components/angular-i18n/angular-locale_bn-bd.js"></script>
+        <script type="text/javascript" src="../bower_components/angular-route/angular-route.min.js"></script>
+    </body>
+</html>

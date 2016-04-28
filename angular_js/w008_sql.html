@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="http_app">
+    <head>
+        <title>SQL</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" >
+        <style type="text/css">
+            table, th, td {
+                border: 1px solid gray;
+                border-collapse: collapse;
+                padding: 5px;
+            }
+            table thead tr {
+                background-color: #000000;
+                color: #ffffff;
+            }
+            table thead tr th {
+                text-align: center;
+            }
+            table tbody tr:nth-child(odd) {
+                background-color: #000000;
+                color: #330066;
+                font-family: cursive;
+                font-style: italic;
+                text-align: center;
+                font-size: larger;
+            }
+            table tbody tr:nth-child(even) {
+                background-color: #000000;
+                color: #ffff00;
+                font-family: sans-serif;
+                font-style: initial;
+                font-stretch: ultra-expanded;
+                font-weight: bolder;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <!-- Mahmudul Hasan Khan-->
+    <body ng-controller="http_ctrl">
+        <div class="container">
+            <div ng-if="customers81 != null">
+                <h3>Displaying Customer information from : <a href="http://localhost:81/return_json/">
+                        http://localhost:81/return_json/
+                    </a></h3>
+                <table class="table table-bordered table-responsive table-condensed table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>Sl no</th>
+                            <th>Customer Id</th>
+                            <th>Name</th>
+                            <th>City</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="customer in customers81|orderBy:'country'">
+                            <td ng-if="$odd" style="background-color:  #663399">{{$index + 1}}</td>
+                            <td ng-if="$even" style="background-color:  #ffff99">{{$index + 1}}</td>
+                            <td ng-if="$odd" style="background-color:  #663399">{{customer.customer_id}}</td>
+                            <td ng-if="$even" style="background-color:  #ffff99">{{customer.customer_id}}</td>
+                            <td ng-if="$odd" style="background-color:  #663399">{{customer.name|uppercase}}</td>
+                            <td ng-if="$even" style="background-color:  #ffff99">{{customer.name|uppercase}}</td>
+                            <td ng-if="$odd" style="background-color:  #663399">{{customer.city|lowercase}}</td>
+                            <td ng-if="$even" style="background-color:  #ffff99">{{customer.city|lowercase}}</td>
+                            <td ng-if="$odd" style="background-color:  #663399">{{customer.country|uppercase}}</td>
+                            <td ng-if="$even" style="background-color:  #ffff99">{{customer.country|uppercase}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div ng-if="customers80 != null">
+                <h3>Displaying Customer information from : <a href="http://localhost/return_json/">
+                        http://localhost/return_json/
+                    </a></h3>
+                <table class="table table-bordered table-responsive table-condensed table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>Sl no</th>
+                            <th>Customer Id</th>
+                            <th>Name</th>
+                            <th>City</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="customer in customers80|orderBy:'country'">
+                            <td ng-if="$odd" style="background-color:  #663399">{{$index + 1}}</td>
+                            <td ng-if="$even" style="background-color:  #ffff99">{{$index + 1}}</td>
+                            <td ng-if="$odd" style="background-color:  #663399">{{customer.customer_id}}</td>
+                            <td ng-if="$even" style="background-color:  #ffff99">{{customer.customer_id}}</td>
+                            <td ng-if="$odd" style="background-color:  #663399">{{customer.name|uppercase}}</td>
+                            <td ng-if="$even" style="background-color:  #ffff99">{{customer.name|uppercase}}</td>
+                            <td ng-if="$odd" style="background-color:  #663399">{{customer.city|lowercase}}</td>
+                            <td ng-if="$even" style="background-color:  #ffff99">{{customer.city|lowercase}}</td>
+                            <td ng-if="$odd" style="background-color:  #663399">{{customer.country|uppercase}}</td>
+                            <td ng-if="$even" style="background-color:  #ffff99">{{customer.country|uppercase}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h3 ng-if="customers81 == null" style="color: #ff3300">Server : 
+                <a href="http://localhost:81/return_json/">http://localhost:81/return_json/</a>
+                is not available !!!</h3>
+            <h3 ng-if="customers80 == null" style="color: #ff3300">Server : 
+                <a href="http://localhost/return_json/">http://localhost/return_json/</a> 
+                is not available !!!</h3>
+        </div>
+        <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="../bower_components/angular-i18n/angular-locale_bn-bd.js"></script>
+        <script type="text/javascript" src="../bower_components/angular-route/angular-route.min.js"></script>
+        <script type="text/javascript">
+
+                                                var http_app = angular.module('http_app', []);
+                                                http_app.controller('http_ctrl', function($scope, $http) {
+                                                    $scope.customers81 = null;
+                                                    $scope.customers80 = null;
+                                                    $http.get("http://localhost:81/return_json/")
+                                                            .success(function(response) {
+                                                                $scope.customers81 = response.customers;
+                                                            });
+                                                    $http.get("http://localhost/return_json/")
+                                                            .success(function(response) {
+                                                                $scope.customers80 = response.customers;
+                                                            });
+                                                });
+
+        </script>
+    </body>
+</html>

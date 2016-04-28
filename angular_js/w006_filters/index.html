@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="person_app">
+    <head>
+        <title>Filters</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" >
+    </head>
+    <!-- Mahmudul Hasan Khan-->
+    <body ng-controller="person_ctrl">
+        <div class="container">
+            <p>First Name : <input type="text" ng-model="first_name"></p>
+            <p>Last Name : <input type="text" ng-model="last_name"></p>
+            <p>Salary in (BDT) : <input type="number" ng-model="salary"></p>
+            <p>Person Information : {{show_info()}}</p>
+            <button type="button" class="btn btn-default" ng-click="add_person()">Add Person</button>
+            <button type="button" class="btn btn-default" ng-click="clear()">Clear</button>
+            <h3>Displaying {{(persons|filter:show_range).length}} persons : </h3>
+            <p><u><strong>Salary Range : </strong></u></p>
+            <p>
+                Salary From : <input type="number" ng-model="salary_from">
+                To : <input type="number" ng-model="salary_to">
+            </p>
+            <ul>
+                <li ng-repeat="person in persons|orderBy: '-salary'|filter:show_range">
+                    {{(person.first_name|uppercase) + ' ' + (person.last_name|lowercase) + '; salary : ' + (person.salary|currency)}}
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript" src="../../bower_components/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../../bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="../../bower_components/angular-i18n/angular-locale_bn-bd.js"></script>
+        <script type="text/javascript" src="../../bower_components/angular-route/angular-route.min.js"></script>
+        <script type="text/javascript" src="scripts/modules/person_app.js"></script>
+        <script type="text/javascript" src="scripts/controllers/person_ctrl.js"></script>
+    </body>
+</html>

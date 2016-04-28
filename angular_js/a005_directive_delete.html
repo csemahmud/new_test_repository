@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Directive Delete</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" >
+    </head>
+    <body>
+        <div>
+            <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+            <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+            <script type="text/javascript" src="../bower_components/angular-i18n/angular-locale_bn-bd.js"></script>
+            <div ng-app="directive_delete_app">
+                <div ng-controller="directive_delete_ctrl">
+                    <div class="container">
+                        <div test-button>
+                            
+                        </div>
+                        <br/>
+                        <div id='divno1' class='form-inline'>
+                            <div class='form-group'>
+                                <label for='exaple_input_name1'><strong>Name : </strong></label>
+                                <input type='text' class='form-control' id='exaple_input_name1' placeholder='Mahmudul Hasan'>
+                            </div>
+                            <div class='form-group'>
+                                <label for='exaple_input_email1'><strong>Email : </strong></label>
+                                <input type='text' class='form-control' id='exaple_input_email1' placeholder='mahmudul@example.com'>
+                            </div>
+                            <div class='form-group'>
+                                <button type='button' targetdiv='1' delete-button class='btn btn-danger'>X</button>
+                            </div>
+                        </div>
+                        <section>
+                            <div id="space-for-buttons">
+                                
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+
+            // Mahmudul Hasan Khan
+
+            var directive_delete_app = angular.module("directive_delete_app", []);
+            function MainCtrl($scope) {
+                $scope.count = 1;
+            }
+            directive_delete_app.directive("testButton", function() {
+                return {
+                    template: '<button add-button type="button" style="margin-bottom: 50px" class="btn btn-primary">Add to more</button>'
+                };
+            });
+            directive_delete_app.directive("addButton", function($compile){
+                return function(scope, element, attrs) {
+                    element.bind("click", function(){
+                        
+                        for(var i=0; i<5; i++) {
+                            scope.count++;
+                            angular.element(document.getElementById('space-for-buttons')).append($compile("<br/><div id='divno"+scope.count+"' class='form-inline'><div class='form-group'><label for='exaple_input_name"+scope.count+"'><strong>Name : </strong></label><input type='text' class='form-control' id='exaple_input_name"+scope.count+"' placeholder='Mahmudul Hasan'></div><div class='form-group'><label for='exaple_input_email"+scope.count+"'><strong>Email : </strong></label><input type='text' class='form-control' id='exaple_input_email"+scope.count+"' placeholder='mahmudul@example.com'></div><div class='form-group'><button type='button' targetdiv='"+scope.count+"' delete-button class='btn btn-danger'>X</button></div></div>")(scope));
+                        }
+                        
+                    });
+                };
+            });
+            directive_delete_app.directive("deleteButton", function(){
+                return function(scope, element, attrs){
+                    element.bind("click", function(){
+                        console.log(attrs);
+                        var no = attrs.targetdiv;
+                        $("#divno"+no).hide();
+                    });
+                };
+            });
+            directive_delete_app.controller("directive_delete_ctrl", ['$scope', function($scope) {
+                $scope.count = 1;
+            }]);
+        </script>
+    </body>
+</html>

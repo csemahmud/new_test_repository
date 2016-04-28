@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>JQuery Exam</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="scripts/bootstrap.min.css">
+        <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>
+                        <strong>Go To : </strong><a href="#q1">Question : 01</a> | <a href="#q2">Question : 02</a>
+                         | <a href="#q3">Question : 03</a> | <a href="#q4">Question : 04</a>
+                          | <a href="#q5">Question : 05</a>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 id="q1">Q1. Change li color of those unorder list, which has more than 3 items</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>List of Footballers : </h3>
+                </div>
+                <div class="col-md-6">
+                    <input id="btn_test1" type="button" 
+                           class="button btn btn-default btn-primary btn-default btn-success" 
+                           value="Click To See The Effect of JQuery">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <h3>Forwards</h3>
+                    <ul class="list-group test1">
+                        <li class="list-group-item">Pele</li>
+                        <li class="list-group-item">Ronaldo : the Phenomenon</li>
+                        <li class="list-group-item">Ronaldinho</li>
+                        <li class="list-group-item">Cristiano Ronaldo</li>
+                        <li class="list-group-item">Miroslav Close</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h3>Middle</h3>
+                    <ul class="list-group test1">
+                        <li class="list-group-item">Zidane</li>
+                        <li class="list-group-item">Beckham</li>
+                        <li class="list-group-item">Kaka</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h3>Back</h3>
+                    <ul class="list-group test1">
+                        <li class="list-group-item">Robarto Carlos</li>
+                        <li class="list-group-item">Olivar Kahn</li>
+                        <li class="list-group-item">Malidini</li>
+                        <li class="list-group-item">Kafu</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 id="q2">Q2. Change first unorder list even element color change and 
+                        second unorder list odd element color change</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>List of Cricketers : </h3>
+                </div>
+                <div class="col-md-6">
+                    <input id="btn_test2" type="button" 
+                           class="button btn btn-default btn-primary btn-default btn-success" 
+                           value="Click To See The Effect of JQuery">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Batsmen</h3>
+                    <ul class="list-group test2_1">
+                        <li class="list-group-item">Adam Gilchrist</li>
+                        <li class="list-group-item">Mathew Heyden</li>
+                        <li class="list-group-item">Sayeed Anwar</li>
+                        <li class="list-group-item">Shaheed Afridi</li>
+                        <li class="list-group-item">Ricky Ponting</li>
+                        <li class="list-group-item">Brayan Lara</li>
+                        <li class="list-group-item">Lanse Clusner</li>
+                        <li class="list-group-item">Jack Callis</li>
+                        <li class="list-group-item">Injamam - Ul - Haq</li>
+                        <li class="list-group-item">Arjuna Ranatunga</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h3>Bowlers</h3>
+                    <ul class="list-group test2_2">
+                        <li class="list-group-item">Wasim Akram</li>
+                        <li class="list-group-item">Shoaid Akhter</li>
+                        <li class="list-group-item">Imran Khan</li>
+                        <li class="list-group-item">Shakib Al Hasan</li>
+                        <li class="list-group-item">Shane Warne</li>
+                        <li class="list-group-item">Glane McGrath</li>
+                        <li class="list-group-item">Brate Lee</li>
+                        <li class="list-group-item">Muttia Muralitharan</li>
+                        <li class="list-group-item">Daniel Vettori</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 id="q3">
+                        Q3. After fill up name, email and address then click the submit button 
+                        this information will be added in the table last row
+                        and all the text of the form must be empty
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <form class="form-horizontal" id="my_form" name="my_form" action="" method="post">
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">Name : </label>
+                            <div class="col-sm-10">
+                                <input type="text" id="name" name="name" class="form-control" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-sm-2 control-label">Email : </label>
+                            <div class="col-sm-10">
+                                <input type="email" id="email" name="email" class="form-control" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="col-sm-2 control-label">Address : </label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" name="address" id="address" rows="5" required="required"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">Add Data</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <table class="table table-bordered" id="my_info_table">
+                        <thead>
+                            <tr>
+                                <td>SL</td>
+                                <td>Name</td>
+                                <td>Email</td>
+                                <td>Address</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>01</td>
+                                <td>Mahmudul Hasan Khan</td>
+                                <td>hasan417@diu.edu.bd</td>
+                                <td>New Market</td>
+                            </tr>
+                            <tr>
+                                <td>02</td>
+                                <td>Alia Bhatt</td>
+                                <td>alia.bhatt@gmail.com</td>
+                                <td>Mumbai</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 id="q4">
+                        Q4. When click a column, change star (*) into row and column number.
+                        here is an example given : a column (1,3) means first row and third column
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered" id="click_info">
+                        <tbody>
+                            <tr>
+                                <td>*</td>
+                                <td>*</td>
+                                <td>1,3</td>
+                                <td>*</td>
+                                <td>*</td>
+                            </tr>
+                            <tr>
+                                <td>*</td>
+                                <td>*</td>
+                                <td>*</td>
+                                <td>*</td>
+                                <td>*</td>
+                            </tr>
+                            <tr>
+                                <td>*</td>
+                                <td>*</td>
+                                <td>*</td>
+                                <td>*</td>
+                                <td>*</td>
+                            </tr>
+                            <tr>
+                                <td>*</td>
+                                <td>*</td>
+                                <td>*</td>
+                                <td>*</td>
+                                <td>*</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 id="q5">
+                        Q5. Using JQuery replace ? mark with proper answer When it is clicked
+                        Ex: 5X4 = 20
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered" id="last_example">
+                        <tbody>
+                            <tr>
+                                <td>Fn</td>
+                                <td>X</td>
+                                <td>Sn</td>
+                                <td>=</td>
+                                <td>Click Below</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>X</td>
+                                <td>4</td>
+                                <td>=</td>
+                                <td>? (Click)</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>X</td>
+                                <td>6</td>
+                                <td>=</td>
+                                <td>? (Click)</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>X</td>
+                                <td>5</td>
+                                <td>=</td>
+                                <td>? (Click)</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>X</td>
+                                <td>3</td>
+                                <td>=</td>
+                                <td>? (Click)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript">
+            
+            $(document).ready(function(){
+                $("#btn_test1").click(function(){
+                    var i = 1;
+                    var a = 3;
+                    var element = 0;
+                    $(".test1").each(function(index){
+                        var nowinfo = $(this);
+                        var total_li = $(nowinfo).children('li').length;
+                        if(total_li > 3) {
+                            $(nowinfo).children('li').css("color","#ffff00");
+                            $(nowinfo).children('li').css("background-color","#663399");
+                            for(; i <(total_li + element); i+=(a++)) {
+                                $(nowinfo).children('li').eq(i - element).css("color","#ffff99");
+                                $(nowinfo).children('li').eq(i - element).css("background-color","#0000cc");
+                            }
+                            element += total_li;
+                        }
+                    });
+                });
+                $("#btn_test2").click(function(){
+                    $(".test2_1 li:odd").css("color","#ffff00");
+                    $(".test2_1 li:odd").css("background-color","#663399");
+                    $(".test2_2 li:even").css("color","#00ffff");
+                    $(".test2_2 li:even").css("background-color","#993366");
+                });
+                $("#my_form").submit(function(e){
+                    e.preventDefault();
+                    var name = $("#name").val();
+                    var email = $("#email").val();
+                    var address = $("#address").val();
+                    var sl = ($("#my_info_table").children('tbody').children('tr').length + 1);
+                    var latest_info = $("<tr><td>" + (("0" + sl).slice(-2)) + "</td><td>" + name + "</td><td>"
+                            + email + "</td><td>" + address + "</td></tr>");
+                    $("#name").val("");
+                    $("#email").val("");
+                    $("#address").val("");
+                    $("#my_info_table").append(latest_info);
+                });
+                $("#click_info").on("click",'td',function(){
+                    var info = $(this);
+                    var col_number = $(info).index();
+                    var row_number = $(info).parent().index();
+                    $(info).text((row_number + 1) + "," + (col_number + 1));
+                });
+                $("#last_example tbody tr").click(function(){
+                    var info = $(this);
+                    var first_number = $(info).children('td').eq(0).text();
+                    var last_number = $(info).children('td').eq(2).text();
+                    $(info).children('td').eq(4).text(first_number * last_number);
+                });
+            });
+            
+        </script>
+    </body>
+</html>

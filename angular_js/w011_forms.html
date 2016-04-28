@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="forms_app">
+    <head>
+        <title>Forms</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" >
+    </head>
+    <!-- Mahmudul Hasan Khan-->
+    <body ng-controller="forms_ctrl">
+        <div class="container">
+            <form novalidate style="max-width: 600px">
+                <table class="table table-bordered table-responsive table-hover table-condensed table-striped">
+                    <tr>
+                        <td><strong>First Name</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><input class="input-lg" type="text" style="width: 90%" ng-model="user.first_name"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Last Name</strong></td>
+                        <td><strong>:</strong></td>
+                        <td><input class="input-lg" type="text" style="width: 90%" ng-model="user.last_name"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td><button class="btn btn-default btn-primary btn-block" ng-click="reset()">Reset</button></td>
+                    </tr>
+                </table>
+            </form>
+            <p>Form : {{user}}</p>
+            <p>Master : {{master}}</p>
+        </div>
+        <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="../bower_components/angular-i18n/angular-locale_bn-bd.js"></script>
+        <script type="text/javascript" src="../bower_components/angular-route/angular-route.min.js"></script>
+        <script type="text/javascript">
+                
+            //   Mahmudul Hasan Khan
+                
+            var forms_app = angular.module('forms_app', []);
+            forms_app.controller('forms_ctrl', function($scope){
+                
+                $scope.master = {
+                    first_name: 'Super',
+                    last_name: 'Man'
+                };
+                $scope.reset = function() {
+                    $scope.user = angular.copy($scope.master);
+                };
+                
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="">
+    <head>
+        <title>Expressions</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" >
+    </head>
+    <!-- Mahmudul Hasan Khan-->
+    <body>
+        <div class="container">
+            <div data-ng-init="quantity=2;cost=5">
+                <p><i>Total Price in BDT : </i><strong>{{quantity*cost|currency}}</strong></p>
+                <p><i>Total Price in BDT : </i><strong ng-bind="quantity*cost|currency"></strong></p>
+            </div>
+            <div ng-init="person={first_name:'Super',last_name:'Man'}">
+                <p><strong>The name is : </strong><i>{{person.first_name + ' ' + person.last_name}}</i></p>
+                <p><strong>The name is : </strong><i data-ng-bind="person.first_name + ' ' + person.last_name"></i></p>
+            </div>
+            <div ng-init="points=[1,15,19,2,20]">
+                <p>The third point is : <strong>{{points[2]}}</strong></p>
+                <p>The third point is : <strong ng-bind="points[2]"></strong></p>
+            </div>
+        </div>
+        <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="../bower_components/angular-i18n/angular-locale_bn-bd.js"></script>
+        <script type="text/javascript" src="../bower_components/angular-route/angular-route.min.js"></script>
+    </body>
+</html>

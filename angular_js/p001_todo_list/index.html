@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>To Do List</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" >
+    </head>
+    <body>
+        <div>
+            <script type="text/javascript" src="../../bower_components/jquery/dist/jquery.js"></script>
+            <script type="text/javascript" src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="../../bower_components/angular/angular.min.js"></script>
+            <script type="text/javascript" src="../../bower_components/angular-i18n/angular-locale_bn-bd.js"></script>
+            <div ng-app="todo_app">
+                <div ng-controller="todo_ctrl">
+                    <div class="container">
+                        <div class="navbar navbar-inverse">
+                            <h1>
+                                <a class="navbar-brand" href="#">
+                                    {{todo.user}}'s To Do List
+                                </a>
+                                <span class="label label-default" ng-class="warning_level()" 
+                                      ng-hide="incomplete_count() == 0">
+                                    {{incomplete_count();}}
+                                </span>
+                            </h1>
+                        </div>
+                        <div class="panel panel-default row">
+                            <div class="input-group">
+                                <input class="form-control" ng-model="action_text" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" ng-click="add_new_item()">
+                                        ADD
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Done</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in todo.items | checked_items : show_complete | orderBy : 'action'">
+                                    <td>
+                                        {{item.action}}
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" ng-model="item.done" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="checkbox-inline">
+                            <label>
+                                <input type="checkbox" ng-model="show_complete" /> Show Complete
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript" src="scripts/modules/todo_app.js"></script>
+            <script type="text/javascript" src="scripts/controllers/todo_ctrl.js"></script>
+            <script type="text/javascript" src="scripts/filters/custom_filters.js"></script>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>E-Commerce</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" >
+    </head>
+    <body>
+        <div>
+            <script type="text/javascript" src="../../bower_components/jquery/dist/jquery.js"></script>
+            <script type="text/javascript" src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="../../bower_components/angular/angular.min.js"></script>
+            <script type="text/javascript" src="../../bower_components/angular-i18n/angular-locale_bn-bd.js"></script>
+            <div ng-app="ecommerce_app">
+                <div ng-controller="sports_ctrl">
+                    <div class="container">
+                        <div class="navbar navbar-inverse">
+                            <a class="navbar-brand" href="#">SPORTS STORE</a>
+                        </div>
+                        <div class="panel panel-default row" ng-controller="product_list_ctrl">
+                            <div class="col-xs-3">
+                                <a ng-click="select_category()"
+                                   class="btn btn-block btn-default btn-lg list-group-item" ng-class="show_active()">Home</a>
+                                <a ng-repeat="category in data.products | orderBy:'category' | unique:'category'"
+                                   ng-click="select_category(category)" class="btn btn-block btn-default btn-lg list-group-item" ng-class="show_active(category)">
+                                    {{category}}
+                                </a>
+                            </div>
+                            <div class="col-xs-8">
+                                <div class="col-sm-6 col-md-4" ng-repeat="product in data.products | filter:is_category_selected | range:selected_page:page_size" style="height: 450px">
+                                    <div class="thumbnail">
+                                        <img ng-src="images/{{product.image}}" alt="...">
+                                        <div class="caption">
+                                            <h3>{{product.name}}</h3>
+                                            <p>{{product.description}}</p>
+                                            <ul>
+                                                <li>Category : {{product.category}}</li>
+                                                <li>ID : {{product.id}}</li>
+                                                <li>Price : {{product.price|currency:'BDT'}}</li>
+                                            </ul>
+                                            <p><a href="#" class="btn btn-primary" role="button">Details</a> <a href="#" class="btn btn-default" role="button">Add to The Cart</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="pull-right btn-group">
+                                        <a ng-repeat="page in data.products | filter:is_category_selected | page_count:page_size"
+                                           ng-click="select_page($index + 1)" class="btn btn-default"
+                                           ng-class="get_page_class($index + 1)">
+                                            {{$index + 1}}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript" src="scripts/modules/ecommerce_app.js"></script>
+            <script type="text/javascript" src="scripts/filters/custom_filters.js"></script>
+            <script type="text/javascript" src="scripts/controllers/sports_ctrl.js"></script>
+            <script type="text/javascript" src="scripts/controllers/product_list_ctrl.js"></script>
+        </div>
+    </body>
+</html>

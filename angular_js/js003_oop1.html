@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>JS | OOP1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+        <div>
+            
+            <h3><u>Test3 : Out Puts</u></h3>
+            <h3 id="tag1"></h3>
+            <ul id="obj1"></ul>
+            <span><strong id="end1"></strong></span>
+            <h3 id="tag2"></h3>
+            <ul id="obj2"></ul>
+            <span><strong id="end2"></strong></span>
+            
+            <script type="text/javascript">
+            
+            // Mahmudul Hasan Khan
+            
+            var student = {name:"Mahmudul Hasan Khan", age:20, cgpa:3.96, email:"hasan417@diu.edu.bd", id:"143-25-417"};
+            
+            var counter = 1;
+            
+            function show_object() {
+                document.getElementById("tag" + counter).innerHTML = "student = {";
+                for(var key in student) {
+                    document.getElementById("obj" + counter).innerHTML += 
+                            "<li><strong>"+ key + " : </strong><i>" + student[key] + ",</i></li>";
+                }
+                document.getElementById("end" + counter++).innerHTML = "};";
+            }
+            
+            show_object();
+            
+            student.age = 24;
+            student.address = "Dhaka";
+            student["email"] = null;
+            
+            for(var i = 0; i < 10; i++) {
+                student["address" + i] = "Dhaka : " + i;
+            }
+            
+            show_object();
+            
+            </script>
+        </div>
+    </body>
+</html>

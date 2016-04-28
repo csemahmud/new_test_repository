@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="note_app">
+    <head>
+        <title>Application</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" >
+    </head>
+    <!-- Mahmudul Hasan Khan-->
+    <body ng-controller="note_ctrl">
+        <div class="container">
+            <h2>My Note</h2>
+            <h3 ng-hide="results == null">Message From : {{path}}</h3>
+            <form ng-hide="server80" action="http://localhost:81/message/save_message.php" method="post">
+                <p>
+                    <textarea name="message" maxlength="100" ng-model="message" cols="40" rows="10">
+                        
+                    </textarea>
+                    <input name="message_id" type="text" ng-hide="true" ng-model="message_id">
+                </p>
+                <div ng-hide="results == null">
+                    <p><input type="submit" value="Save"></p>
+                    <p><input type="reset" value="Clear"></p>
+                </div>
+                <div ng-show="results == null">
+                    <p><input type="button" ng-click="save()" value="Save"></p>
+                    <p><input type="button" ng-click="clear()" value="Clear"></p>
+                </div>
+            </form>
+            <form ng-show="server80" action="http://localhost/message/save_message.php" method="post">
+                <p>
+                    <textarea name="message" maxlength="100" ng-model="message" cols="40" rows="10">
+                        
+                    </textarea>
+                    <input name="message_id" type="text" ng-hide="true" ng-model="message_id">
+                </p>
+                <div ng-hide="results == null">
+                    <p><input type="submit" value="Save"></p>
+                    <p><input type="reset" value="Clear"></p>
+                </div>
+                <div ng-show="results == null">
+                    <p><input type="button" ng-click="save()" value="Save"></p>
+                    <p><input type="button" ng-click="clear()" value="Clear"></p>
+                </div>
+            </form>
+            <p>Number of characters left : <span ng-bind="left()"></span></p>
+        </div>
+        <script type="text/javascript" src="../../bower_components/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../../bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="../../bower_components/angular-i18n/angular-locale_bn-bd.js"></script>
+        <script type="text/javascript" src="../../bower_components/angular-route/angular-route.min.js"></script>
+        <script type="text/javascript" src="scripts/modules/note_app.js"></script>
+        <script type="text/javascript" src="scripts/controllers/note_ctrl.js"></script>
+    </body>
+</html>

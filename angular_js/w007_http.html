@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="http_app">
+    <head>
+        <title>HTTP</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" >
+    </head>
+    <!-- Mahmudul Hasan Khan-->
+    <body ng-controller="http_ctrl">
+        <div class="container">
+            <h3>Displaying Person information from : <a href="http://www.w3schools.com/angular/customers.php">
+                http://www.w3schools.com/angular/customers.php
+                </a></h3>
+            <ul>
+                <li ng-repeat="person in persons">
+                    {{person.Name + ', from : ' + person.Country}}
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="../bower_components/angular-i18n/angular-locale_bn-bd.js"></script>
+        <script type="text/javascript" src="../bower_components/angular-route/angular-route.min.js"></script>
+        <script type="text/javascript">
+            
+            var http_app = angular.module('http_app', []);
+            http_app.controller('http_ctrl', function($scope, $http){
+                $http.get("http://www.w3schools.com/angular/customers.php")
+                        .success(function(response){
+                            $scope.persons = response.records;
+                        });
+            });
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="validation_app">
+    <head>
+        <title>Validation</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" >
+    </head>
+    <!-- Mahmudul Hasan Khan-->
+    <body ng-controller="validation_ctrl">
+        <div class="container">
+            <h2>Form Validation Example</h2>
+            <form name="validation_form" action="" method="post" novalidate style="max-width: 600px">
+                <table class="table table-bordered table-responsive table-hover table-condensed table-striped">
+                    <tr>
+                        <td><strong>Name</strong></td>
+                        <td><strong>:</strong></td>
+                        <td>
+                            <input class="input-lg" type="text" name="name" style="width: 90%" ng-model="name" required="true">
+                            <br/>
+                            <span style="color: #ff3300" ng-show="validation_form.name.$dirty && validation_form.name.$invalid">
+                                <span ng-show="validation_form.name.$error.required">
+                                    First Name is Required !!!
+                                </span>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Email</strong></td>
+                        <td><strong>:</strong></td>
+                        <td>
+                            <input class="input-lg" type="email" name="email" style="width: 90%" ng-model="email" required="true">
+                            <br/>
+                            <span style="color: #ff3300" ng-show="validation_form.email.$dirty && validation_form.email.$invalid">
+                                <span ng-show="validation_form.email.$error.required">
+                                    Email is Required !!!
+                                </span>
+                                <span ng-show="validation_form.email.$error.email">
+                                    Invalid Email Address !!!
+                                </span>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <input type="submit" class="btn btn-default btn-primary btn-block"
+                                   ng-disabled="(validation_form.user.name.$dirty && validation_form.user.name.$invalid)
+                                        || (validation_form.email.$dirty && validation_form.email.$invalid)">
+                            <input type="reset" class="btn btn-default btn-primary btn-block">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="../bower_components/angular-i18n/angular-locale_bn-bd.js"></script>
+        <script type="text/javascript" src="../bower_components/angular-route/angular-route.min.js"></script>
+        <script type="text/javascript">
+                
+            //   Mahmudul Hasan Khan
+                
+            var validation_app = angular.module('validation_app', []);
+            validation_app.controller('validation_ctrl', function($scope){
+                
+                $scope.name = "Super Man";
+                $scope.email = "super.man@mail.com";
+                
+            });
+        </script>
+    </body>
+</html>

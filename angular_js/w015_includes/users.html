@@ -1,0 +1,119 @@
+<div ng-controller="users_ctrl">
+    <button style="max-width: 250px"
+            class="btn btn-success btn-default btn-block btn-primary" ng-click="edit_user(user.user_id)">
+        <span class="glyphicon glyphicon-user">&nbsp;&nbsp;Create New User</span>
+    </button>
+    <hr/>
+    <h3 ng-show="edit">Edit User : {{user_id + ' : ' + first_name + ' ' + last_name}}</h3>
+    <h3 ng-hide="edit">Create New User</h3>
+    <form name="user_form" action="" method="post" novalidate class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label"><strong>First Name : </strong></label>
+            <div class="col-sm-10">
+                <input name="first_name" type="text" style="min-width: 370px; font-size: 20px; height: 31px; font-family: cursive; font-style: italic; color: #663399;" 
+                       class="input-sm" ng-model="first_name" placeholder="First Name" required="required" tabindex="1">
+
+                <span style="color: #ff3300" ng-show="user_form.first_name.$dirty && user_form.first_name.$invalid">
+                    <span ng-show="user_form.first_name.$error.required">
+                        First Name is Required !!!
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label"><strong>Last Name : </strong></label>
+            <div class="col-sm-10">
+                <input name="last_name" type="text" style="min-width: 370px; font-size: 20px; height: 31px; font-family: cursive; font-style: italic; color: #663399;"
+                       class="input-sm" ng-model="last_name" placeholder="Last Name" required="required" tabindex="2">
+
+                <span style="color: #ff3300" ng-show="user_form.last_name.$dirty && user_form.last_name.$invalid">
+                    <span ng-show="user_form.last_name.$error.required">
+                        Last Name is Required !!!
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label"><strong>Email : </strong></label>
+            <div class="col-sm-10">
+                <input name="email" type="email" style="min-width: 370px; font-size: 20px; height: 31px; color: #0000ff"
+                       class="input-sm" ng-model="email" ng-disabled="edit" placeholder="email@example.com" required="required" tabindex="3">
+
+                <span style="color: #ff3300" ng-show="user_form.email.$dirty && user_form.email.$invalid">
+                    <span ng-show="user_form.email.$error.required">
+                        Email is Required !!!
+                    </span>
+                    <span ng-show="user_form.email.$error.email">
+                        Invalid Email Address !!!
+                    </span>
+                </span>
+                <label class="control-label" ng-show="email_exits" style="color: #ff3300">This Email id already exists</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label"><strong>Password : </strong></label>
+            <div class="col-sm-10">
+                <input name="password1" type="password" style="min-width: 370px; font-size: 20px; height: 31px;"
+                       class="input-sm" ng-model="password1" placeholder="Password" required="required" tabindex="4">
+
+                <span style="color: #ff3300" ng-show="user_form.password1.$dirty && user_form.password1.$invalid">
+                    <span ng-show="user_form.password1.$error.required">
+                        Password is Required !!!
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="form-group" ng-hide="edit">
+            <label class="col-sm-2 control-label"><strong>Repeat : </strong></label>
+            <div class="col-sm-10">
+                <input name="password2" type="password" style="min-width: 370px; font-size: 20px; height: 31px;"
+                       class="input-sm" ng-model="password2" placeholder="Repeat Password" required="required" tabindex="5">
+
+                <span style="color: #ff3300" ng-show="user_form.password2.$dirty && user_form.password2.$invalid">
+                    <span ng-show="user_form.password2.$error.required">
+                        Re-type password again !!!
+                    </span>
+                </span>
+                <label class="control-label" ng-hide="mismatch_password || (password1 == '')" style="color: #00ff00">Password has matched</label>
+                <label class="control-label" ng-show="mismatch_password && (password2 != '') && (password2.length < password1.length)">Type more .....</label>
+                <label class="control-label" ng-show="mismatch_password && (password2 != '') && (password2.length >= password1.length)" style="color: #ff3300">Password does not match</label>
+            </div>
+        </div>
+    </form>
+    <hr/>
+    <button style="max-width: 250px" ng-disabled="mismatch_password || incomplete || email_exits ||
+                                (user_form.first_name.$dirty && user_form.first_name.$invalid) ||
+                                (user_form.last_name.$dirty && user_form.last_name.$invalid) ||
+                                (user_form.email.$dirty && user_form.email.$invalid) ||
+                                (user_form.password1.$dirty && user_form.password1.$invalid) ||
+                                (user_form.password2.$dirty && user_form.password2.$invalid)"
+            class="btn btn-success btn-default btn-block btn-primary" ng-click="save_user()" tabindex="6">
+        <span class="glyphicon glyphicon-save">&nbsp;&nbsp;Save Changes</span>
+    </button>
+    <hr/>
+    <h3>List of Users : </h3>
+    <table class="table table-responsive table-bordered table-condensed table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Edit</th>
+                <th>User Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="user in users|orderBy:'first_name'">
+                <td>
+                    <button class="btn btn-default btn-block btn-primary" ng-click="edit_user(user.user_id)">
+                        <span class="glyphicon glyphicon-pencil">&nbsp;&nbsp;Edit</span>
+                    </button>
+                </td>
+                <td>{{user.user_id}}</td>
+                <td>{{user.first_name}}</td>
+                <td>{{user.last_name}}</td>
+                <td><a href="{{user.email}}" target="_blank">{{user.email}}</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

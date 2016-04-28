@@ -1,0 +1,21 @@
+{
+  "name": "mhk_client_dev",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-i18n": "~1.4.6",
+    "angular": "~1.4.6",
+    "bootstrap": "~3.3.5",
+    "masonry": "desandro/masonry#~3.3.2",
+    "angular-route": "~1.4.6"
+  }
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>JS | Test2</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+        <div>
+            <h3><u>Test2 : Out Puts</u></h3>
+            <ul>
+                <li><strong id="tag1"></strong><i id="out1"></i></li>
+                <li><strong id="tag2"></strong><i id="out2"></i></li>
+                <li><strong id="tag3"></strong><i id="out3"></i></li>
+                <li><strong id="tag4"></strong><i id="out4"></i></li>
+                <li><strong id="tag5"></strong><i id="out5"></i></li>
+                <li><strong id="tag6"></strong><i id="out6"></i></li>
+                <li><strong id="tag7"></strong><i id="out7"></i></li>
+                <li><strong id="tag8"></strong><i id="out8"></i></li>
+                <li><strong id="tag9"></strong><i id="out9"></i></li>
+                <li><strong id="tag10"></strong><i id="out10"></i></li>
+                <li><strong id="tag11"></strong><i id="out11"></i></li>
+            </ul>
+            <script type="text/javascript">
+            
+            // Mahmudul Hasan Khan
+            
+            var passengers = ["Super Man", "Mahmudul Hasan Khan", "Bat Man", "Wolverine", "iron Man", "Wonder Woman",
+            "Silver Surfer", "Living Tribunal"];
+            document.getElementById("tag1").innerHTML = "passengers[2] : ";
+            document.getElementById("out1").innerHTML = passengers[2];
+            
+            passengers[2] = "New Passenger";
+            
+            document.getElementById("tag2").innerHTML = "passengers[2] : ";
+            document.getElementById("out2").innerHTML = passengers[2];
+            
+            function add_passenger(name) {
+                for(var index in passengers) {
+                    if(passengers[index] == "undefined" || !passengers[index]) {
+                        passengers[index] = name;
+                        return true;
+                    }
+                }
+                
+                return false;
+            }
+            
+            passengers[300] = "undefined";
+            passengers[500] = false;
+            passengers[501] = false;
+            passengers["Test"] = "<strong><i> Test </i></strong>";
+            
+            add_passenger("<strong><i> Alia Bhatt </i></strong>");
+            add_passenger("<strong><i> Shraddha Kapoor </i></strong>");
+            add_passenger("<strong><i> Katrina Kaif </i></strong>");
+            
+            document.getElementById("tag3").innerHTML = "passengers : ";
+            document.getElementById("out3").innerHTML = passengers;
+            
+            document.getElementById("tag4").innerHTML = "passengers.pop() : ";
+            document.getElementById("out4").innerHTML = passengers.pop();
+            
+            passengers.push("<strong><i> Amy Jackson </i></strong>");
+            
+            document.getElementById("tag5").innerHTML = "passengers : ";
+            document.getElementById("out5").innerHTML = passengers;
+            
+            var new_passengers = passengers.map(function (pname) {
+                if(pname == "<strong><i> Alia Bhatt </i></strong>" ||
+                        pname == "<strong><i> Shraddha Kapoor </i></strong>" ||
+                        pname == "<strong><i> Amy Jackson </i></strong>") {
+                    return pname + " : Bollywood Actress";
+                }
+                return pname + " : Super Hero";
+            });
+            
+            document.getElementById("tag6").innerHTML = "new_passengers : ";
+            document.getElementById("out6").innerHTML = new_passengers;
+            
+            var counter = 0;
+            
+            function add() {
+                return function () {
+                    return counter += 1;
+                }
+            }
+            
+            var afunc = add();
+            
+            document.getElementById("tag7").innerHTML = "add()() : ";
+            document.getElementById("out7").innerHTML = add()();
+            
+            document.getElementById("tag8").innerHTML = "add() : ";
+            document.getElementById("out8").innerHTML = add();
+            
+            document.getElementById("tag9").innerHTML = "add()() : ";
+            document.getElementById("out9").innerHTML = add()();
+            
+            document.getElementById("tag10").innerHTML = "afunc() : ";
+            document.getElementById("out10").innerHTML = afunc();
+            
+            document.getElementById("tag11").innerHTML = "counter : ";
+            document.getElementById("out11").innerHTML = counter;
+            
+            </script>
+        </div>
+    </body>
+</html>

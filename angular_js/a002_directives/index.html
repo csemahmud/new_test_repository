@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Directives</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" >
+    </head>
+    <body>
+        <div>
+            <script type="text/javascript" src="../../bower_components/jquery/dist/jquery.js"></script>
+            <script type="text/javascript" src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="../../bower_components/angular/angular.min.js"></script>
+            <div ng-app="directives_app">
+                <div ng-controller="directives_ctrl">
+                    <div class="container">
+                        <div ng-include="'include.html'">
+                            
+                        </div>
+                        <hr/>
+                        <div mhk-isolated-scope testattr="customer" nametattr="{{customer.name}}" streetattr="{{customer.street}}" >
+
+                        </div>
+                        <strong>Change Name:</strong>
+                         <input type="text" ng-model="customer.name" >
+                         <br/>
+                        <strong>Change Street:</strong>
+                         <input type="text" ng-model="customer.street" >
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                
+                // Mahmudul Hasan Khan
+                
+                var directives_app = angular.module("directives_app", []);
+                
+                directives_app.directive('myDomDirective', function() {
+                    return {
+                        restrict: 'EA',
+                        templateUrl: "template.html",
+                        link: function($scope, element, attrs) {
+                            element.bind('click', function() {
+                                element.html('You Clicked Me !!!');
+                            });
+                            element.bind('mouseenter', function() {
+                                element.css('background-color', 'blue');
+                            });
+                            element.bind('mouseleave', function() {
+                                element.css('background-color', 'yellow');
+                            });
+                        }
+                    };
+                });
+                
+                directives_app.directive('mhkIsolatedScope', function () {
+                    return {
+                        scope: {
+                            customer_attr : '=testattr',
+                            nametattr : '@',
+                            streetattr : '@'
+                        },
+                        template: '<ul><li>Customer: {{customer_attr}}</li><li>Name: {{nametattr}}</li><li>Street: {{streetattr}}</li></ul>',
+                        link: function($scope, element, attrs) {
+                            element.bind('click', function() {
+                                console.log($scope.nametattr);
+                                alert('nametattr: '+$scope.nametattr);
+                                $scope.customer.name = "testattr";
+                                alert($scope.customer.name);
+                            });
+                        }
+                    };
+                });
+
+                directives_app.controller('directives_ctrl', ['$scope', function ($scope) {
+                        
+                    $scope.todo = "Click Me !!!";
+                    
+                    $scope.customer = {
+                        name: 'David',
+                        street: '1234 Anywhere St.'
+                    };;
+                }]);
+                
+            </script>
+        </div>
+    </body>
+</html>

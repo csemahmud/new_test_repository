@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Student Info</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" >
+    </head>
+    <body>
+        <div>
+            <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+            <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+            <div ng-app="student_app">
+                <div ng-controller="student_ctrl">
+                    <div class="container">
+                        <div class="row" style="margin-top: 100px">
+                            <div class="col-lg-12">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="name" class="col-sm-2 control-label">
+                                            <strong>
+                                                Name : 
+                                            </strong>
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" ng-model="a_student.name" class="form-control" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="col-sm-2 control-label">
+                                            <strong>
+                                                Email : 
+                                            </strong>
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input type="email" ng-model="a_student.email" class="form-control" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="age" class="col-sm-2 control-label">
+                                            <strong>
+                                                Age : 
+                                            </strong>
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input type="number" ng-model="a_student.age" class="form-control" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input ng-init="a_student.status = false" ng-model="a_student.status" type="checkbox">
+                                                    Active Student
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button ng-disabled="!a_student.name || !a_student.email || !a_student.age"
+                                                    type="button" ng-click="add_student(a_student)" class="btn btn-default">
+                                                Add Student
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <p ng-hide="get_number_of_active() == 0" class="bg-primary">
+                                    Number of Active Students : {{get_number_of_active()}}
+                                </p>
+                                <p ng-hide="(students.length - get_number_of_active()) == 0" class="bg-primary">
+                                    Number of Inactive Students : {{(students.length - get_number_of_active())}}
+                                </p>
+                                <table ng-if="students.length > 0" class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>SL</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Age</th>
+                                            <th>Status</th>
+                                            <th>Active/Inactive</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="student in students">
+                                            <td>{{$index + 1}}</td>
+                                            <td>{{student.name}}</td>
+                                            <td>{{student.email}}</td>
+                                            <td>{{student.age}}</td>
+                                            <td>{{student.status}}</td>
+                                            <td><input type="checkbox" ng-model="student.status"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p ng-if="students.length == 0" class="bg-danger">No Data Found</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+
+            // Mahmudul Hasan Khan
+
+            var students = [
+                {name: "Super-Man", email: "super.man@mail.com", age: 24, status: true},
+                {name: "Iron-Man", email: "iron.man@mail.com", age: 30, status: false}
+            ];
+
+            var student_app = angular.module("student_app", []);
+            student_app.controller("student_ctrl", function($scope) {
+
+                $scope.students = students;
+                $scope.get_number_of_active = function() {
+                    var count = 0;
+                    angular.forEach($scope.students, function(student) {
+                        if (student.status)
+                            count++;
+                    });
+                    return count;
+                };
+                $scope.add_student = function(student) {
+                    console.log(student);
+                    $scope.students.push(student);
+                    delete $scope.a_student;
+                };
+            });
+        </script>
+    </body>
+</html>

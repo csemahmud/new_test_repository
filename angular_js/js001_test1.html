@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>JS | Test1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+        <div>
+            <h3><u>Test1 : Out Puts</u></h3>
+            <ul>
+                <li><strong id="tag1"></strong><i id="out1"></i></li>
+                <li><strong id="tag2"></strong><i id="out2"></i></li>
+                <li><strong id="tag3"></strong><i id="out3"></i></li>
+                <li><strong id="tag4"></strong><i id="out4"></i></li>
+                <li><strong id="tag5"></strong><i id="out5"></i></li>
+                <li><strong id="tag6"></strong><i id="out6"></i></li>
+                <li><strong id="tag7"></strong><i id="out7"></i></li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            
+            // Mahmudul Hasan Khan
+            
+            var info = "\n\n\n\tFlight No.# : \t\"912\n\n\tSeat No.# : \t\"21C";
+            alert(info);
+            document.getElementById("tag1").innerHTML = "info : ";
+            document.getElementById("out1").innerHTML = "<pre>" + info + "</pre>";
+            document.getElementById("tag2").innerHTML = "info.charAt(7) : ";
+            document.getElementById("out2").innerHTML = info.charAt(7);
+            
+            var user_name = prompt("What is your user-name ? Enter it :", "undefined");
+            while(user_name == "undefined" || user_name == "") {
+                alert("User-Name is required !!!");
+                user_name = prompt("What is your user-name ? Enter it :", "undefined");
+            }
+            
+            alert("Thank You !!! " + user_name);
+            
+            document.getElementById("tag3").innerHTML = "user_name : ";
+            document.getElementById("out3").innerHTML = user_name;
+            
+            if(confirm("Hey " + user_name + ", are you sure, you want to do task #08 ?")) {
+                alert("Good Job");
+            } else {
+                alert("bad job");
+            }
+            
+            function add(a, b) {
+                try {
+                    var result = parseFloat(a) + parseFloat(b);
+                    if(!isNaN(result)) {
+                        return result;
+                    }
+                    
+                    return a+b;
+                    
+                } catch(err) {
+                    alert(err);
+                }
+            }
+            
+            
+            document.getElementById("tag4").innerHTML = "add(Math.sqrt(Math.PI) + 10) : ";
+            document.getElementById("out4").innerHTML = add(Math.sqrt(Math.PI), 10);
+            
+            document.getElementById("tag5").innerHTML = "add(Math.sqrt(Math.PI) + \"10\") : ";
+            document.getElementById("out5").innerHTML = add(Math.sqrt(Math.PI), "10");
+            
+            document.getElementById("tag6").innerHTML = "add(Math.sqrt(Math.PI) + \"TEN\") : ";
+            document.getElementById("out6").innerHTML = add(Math.sqrt(Math.PI), "TEN");
+            
+            var test_function = function() {
+                return "Test function has returned value successfully .";
+            };
+            
+            (function(){
+                alert(test_function());
+            })();
+            
+            document.getElementById("tag7").innerHTML = "test_function() : ";
+            document.getElementById("out7").innerHTML = test_function();
+        </script>
+    </body>
+</html>

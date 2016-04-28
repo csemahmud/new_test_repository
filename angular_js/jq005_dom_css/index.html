@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>JQuery Test</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+        <div class="homepage-wrapper">
+            <h1>Guess The The Color of Each DOM</h1>
+            <h2 id="h2change">Welcome to JQuery Travels . Traveling DOM since 2006</h2>
+            <p>Fly to New-York for as little as <span>$299</span></p>
+            <p>Click Below and See Changes</p>
+            <h2 class="h2change">Welcome to JQuery Travels . Traveling DOM since 2006 Click Here</h2>
+            <h2 class="h2change">Welcome to JQuery Travels . Traveling DOM since 2006 Click Here</h2>
+            <h2 class="h2change abc">Welcome to JQuery Travels . Traveling DOM since 2006 Click Here</h2>
+            <ul class="unorder">
+                <li>Click Any one Below</li>
+                <li class="another">First Click</li>
+                <li>Second Click</li>
+                <li>Third Click</li>
+                <li>Fourth Click</li>
+                <li class="info">Fifth Click</li>
+            </ul>
+        </div>
+        <script src="scripts/jquery-2.1.4.min.js"></script>
+        <script>
+            
+            // Mahmudul Hasan Khan
+            
+            $(".h2change").css("background-color","#0000FF");
+            $(".h2change").css("color","#FFFF00");
+            $(".unorder li").last().prev().prev().css("background-color","#0000FF");
+            $(".unorder li").last().prev().prev().css("color","#FFFF00");
+            $(".info").closest(".homepage-wrapper").find("h2").last().css("background-color","#FF0000");
+            $(".info").closest(".homepage-wrapper").find("h2").last().css("color","#00FFFF");
+            
+            $(".unorder").on("click", "li", function(){
+                $(this).closest(".unorder").append("<li>Hello World Click</li>");
+                $(".unorder li").last().prev().prev().prev().css("background-color","#FFFFFF");
+                $(".unorder li").last().prev().prev().prev().css("color","#000000");
+                $(".unorder li").last().prev().prev().css("background-color","#0000FF");
+                $(".unorder li").last().prev().prev().css("color","#FFFF00");
+            });
+            $(".h2change").click(function(){
+                $(".h2change").css("background-color","#FF0000");
+                $(".h2change").css("color","#00FFFF");
+                $(".info").closest(".homepage-wrapper").find("h2").last().css("background-color","#0000FF");
+                $(".info").closest(".homepage-wrapper").find("h2").last().css("color","#FFFF00");
+            });
+        </script>
+    </body>
+</html>

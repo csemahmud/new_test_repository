@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>JS | OOP2</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+        <div>
+            <h3><u>Test4 : Out Puts</u></h3>
+            <h3 id="tag1"></h3>
+            <ul id="obj1"></ul>
+            <span><strong id="end1"></strong></span>
+            <h3 id="tag2"></h3>
+            <ul id="obj2"></ul>
+            <span><strong id="end2"></strong></span>
+            
+            <script type="text/javascript">
+            
+            // Mahmudul Hasan Khan
+            
+            var age = 20;
+            
+            var students = ["Mahmudul Hasan Khan", "Alia Bhatt", "Shraddha Kapoor", "Katrina Kaif"];
+            var university = {
+                name:"DIU",
+                email:"admin@diu.edu.bd",
+                student_list:students,
+                add_student:function(student_name) {
+                    this.student_list.push(student_name);
+                    return this.student_list.length-1;
+                }
+            };
+            
+            var counter = 1;
+            
+            function show_object() {
+                document.getElementById("tag" + counter).innerHTML = "university = {";
+                for(var key in university) {
+                    document.getElementById("obj" + counter).innerHTML += 
+                            "<li><strong>"+ key + " : </strong><i>" + university[key] + ",</i></li>";
+                }
+                document.getElementById("end" + counter++).innerHTML = "};";
+            }
+            
+            show_object();
+            
+            university.university_age = age;
+            university.add_student("<strong><i> Amy Jackson </i></strong>");
+            
+            function add_student(student_name) {
+                university.student_list.push(student_name);
+            }
+            
+            add_student("<strong><i> Samantha </i></strong>");
+            
+            show_object();
+            
+            </script>
+        </div>
+    </body>
+</html>

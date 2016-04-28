@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="api_app">
+    <head>
+        <title>API</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" >
+    </head>
+    <!-- Mahmudul Hasan Khan-->
+    <body ng-controller="api_ctrl">
+        <div class="container">
+            <p>x1 = {{x1}}</p>
+            <p>UPPERCASE : {{x2}}</p>
+            <p>lowercase : {{x3}}</p>
+            <p>is x1 a String : {{x4}} </p>
+            <p>is x1 a Number : {{x5}} </p>
+            <p></p>
+        </div>
+        <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="../bower_components/angular-i18n/angular-locale_bn-bd.js"></script>
+        <script type="text/javascript" src="../bower_components/angular-route/angular-route.min.js"></script>
+        <script type="text/javascript">
+                
+            //   Mahmudul Hasan Khan
+                
+            var api_app = angular.module('api_app', []);
+            api_app.controller('api_ctrl', function($scope){
+                
+                $scope.x1 = "Super Man is 30 years old";
+                $scope.x2 = angular.uppercase($scope.x1);
+                $scope.x3 = angular.lowercase($scope.x1);
+                $scope.x4 = angular.isString($scope.x1);
+                $scope.x5 = angular.isNumber($scope.x1);
+                
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="">
+    <head>
+        <title>DOM</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" >
+    </head>
+    <!-- Mahmudul Hasan Khan-->
+    <body>
+        <div class="container" ng-init="mhk_switch=true">
+            <p><button ng-disabled="!mhk_switch" onclick="alert('You have clicked me !!!')">
+                    <label ng-show="mhk_switch">Click Me</label>
+                    <label ng-hide="mhk_switch">Disabled</label>
+                </button></p>
+            <p><input type="checkbox" ng-model="mhk_switch">Button</p>
+            <p ng-show="mhk_switch" style="color: #00ff00">Button is Enabled</p>
+            <p ng-hide="mhk_switch" style="color: #ff0000">Button is Disabled</p>
+        </div>
+        <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="../bower_components/angular-i18n/angular-locale_bn-bd.js"></script>
+        <script type="text/javascript" src="../bower_components/angular-route/angular-route.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="date_app">
+    <head>
+        <title>datepicker</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="css/jquery-ui.css" type="text/css" media="all">
+        <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" >
+    </head>
+    <body ng-controller="date_ctrl">
+        <div style="float: left; margin-top: 100px; margin-left: 50px">
+            <h1>datepicker</h1>
+            <form action="" onsubmit="alert('Date of Birth : ' + $('#birth_date').val())" method="post">
+                <table>
+                    <tr>
+                        <td>
+                            <strong>Date   of   Birth: (<span style="color: #ff0000">*</span>)</strong>
+                        </td>
+                        <td>
+                            <input type="text" id="birth_date" name="birth_date" required="required" tabindex="1"  placeholder="Enter   yyyy-mm-dd   format   .....">
+                        <td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" name="submit_btn" value="Submit" tabindex="2"></td>
+                    </tr>
+                </table>
+                <h1 id="age"></h1>
+            </form>
+        </div>
+        <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.js"></script>
+        <script type="text/javascript" src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+
+                                // Mahmudul Hasan Khan
+
+                                $(document).ready(function() {
+                                    $("#birth_date").datepicker({
+                                        dateFormat: 'yy-mm-dd',
+                                        changeMonth: true,
+                                        changeYear: true
+                                    });
+                                });
+
+                                $('#birth_date').change(function() {
+                                    var birth_date = new Date($('#birth_date').val());
+                                    var today = new Date();
+                                    if (today >= birth_date) {
+                                        var age = today.getYear() - birth_date.getYear();
+                                        if ((today.getMonth() - birth_date.getMonth()) < 0) {
+                                            age--;
+                                        } else if (((today.getMonth() - birth_date.getMonth()) === 0) && ((today.getDate() - birth_date.getDate()) < 0)) {
+                                            age--;
+                                        }
+                                        if (age > 0) {
+                                            $('#age').text('He or she is : ' + age + ' years old.');
+                                        } else {
+                                            var age = today.getMonth() - birth_date.getMonth();
+                                            if ((today.getDate() - birth_date.getDate()) < 0) {
+                                                age--;
+                                            }
+                                            if (age > 0) {
+                                                $('#age').text('He or she is : ' + age + ' months old.');
+                                            } else if (age < 0) {
+                                                age += 12;
+                                                $('#age').text('He or she is : ' + age + ' months old.');
+                                            } else {
+                                                var age = today.getDate() - birth_date.getDate();
+                                                if (age < 0) {
+                                                    switch (birth_date.getMonth()) {
+                                                        case 2:
+                                                            age += 28;
+                                                            break;
+                                                        case 4:
+                                                        case 6:
+                                                        case 9:
+                                                        case 11:
+                                                            age += 30;
+                                                            break;
+                                                        default:
+                                                            age += 31;
+                                                            break;
+                                                    }
+                                                }
+                                                $('#age').text('He or she is : ' + age + ' days old.');
+                                            }
+                                        }
+
+                                    } else {
+                                        $('#age').text('Invalid Input !!!');
+                                    }
+                                });
+
+        </script>
+        <!--<script type="text/javascript" src="../../bower_components/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="../../bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="../../bower_components/angular-i18n/angular-locale_bn-bd.js"></script>
+        <script type="text/javascript" src="../../bower_components/angular-route/angular-route.min.js"></script>-->
+    </body>
+</html>
